@@ -34,11 +34,11 @@ namespace Decorator
     class DecoratorBase : public VisualComponent
     {
     protected:
-        std::shared_ptr<VisualComponent> component_;
+        std::shared_ptr<VisualComponent> m_component;
 
     public:
         explicit DecoratorBase(std::shared_ptr<VisualComponent> component)
-            : component_(std::move(component)) {}
+            : m_component(std::move(component)) {}
     };
 
     // Concrete decorators add responsibilities dynamically.
@@ -50,7 +50,7 @@ namespace Decorator
 
         std::string draw() const override
         {
-            return component_->draw() + " + border";
+            return m_component->draw() + " + border";
         }
     };
 
@@ -62,7 +62,7 @@ namespace Decorator
 
         std::string draw() const override
         {
-            return component_->draw() + " + scroll";
+            return m_component->draw() + " + scroll";
         }
     };
 

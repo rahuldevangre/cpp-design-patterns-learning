@@ -25,34 +25,34 @@ namespace Composite
     // Leaf represents end objects in the composition.
     class Leaf : public Component
     {
-        std::string name_;
+        std::string m_name;
 
     public:
-        explicit Leaf(std::string name) : name_(std::move(name)) {}
+        explicit Leaf(std::string name) : m_name(std::move(name)) {}
         void operation(int indent = 0) const override
         {
-            std::cout << std::string(indent, ' ') << name_ << "\n";
+            std::cout << std::string(indent, ' ') << m_name << "\n";
         }
     };
 
     // CompositeNode holds children and implements the tree structure.
     class CompositeNode : public Component
     {
-        std::string name_;
-        std::vector<std::shared_ptr<Component>> children_;
+        std::string m_name;
+        std::vector<std::shared_ptr<Component>> m_children;
 
     public:
-        explicit CompositeNode(std::string name) : name_(std::move(name)) {}
+        explicit CompositeNode(std::string name) : m_name(std::move(name)) {}
 
         void add(std::shared_ptr<Component> child)
         {
-            children_.push_back(std::move(child));
+            m_children.push_back(std::move(child));
         }
 
         void operation(int indent = 0) const override
         {
-            std::cout << std::string(indent, ' ') << name_ << "\n";
-            for (const auto &child : children_)
+            std::cout << std::string(indent, ' ') << m_name << "\n";
+            for (const auto &child : m_children)
             {
                 child->operation(indent + 2);
             }

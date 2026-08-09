@@ -23,26 +23,26 @@ namespace Observer
     // Subject maintains a list of observers and notifies them.
     class Subject
     {
-        std::vector<Observer *> observers_;
-        int state_ = 0;
+        std::vector<Observer *> m_observers;
+        int m_state = 0;
 
     public:
         void attach(Observer *observer)
         {
-            observers_.push_back(observer);
+            m_observers.push_back(observer);
         }
 
         void detach(Observer *observer)
         {
-            observers_.erase(std::remove(observers_.begin(), observers_.end(), observer), observers_.end());
+            m_observers.erase(std::remove(m_observers.begin(), m_observers.end(), observer), m_observers.end());
         }
 
         void setState(int state)
         {
-            state_ = state;
-            for (auto *observer : observers_)
+            m_state = state;
+            for (auto *observer : m_observers)
             {
-                observer->update(state_);
+                observer->update(m_state);
             }
         }
     };

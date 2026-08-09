@@ -38,14 +38,14 @@ namespace Strategy
 
     class Context
     {
-        std::unique_ptr<Strategy> strategy_;
+        std::unique_ptr<Strategy> m_strategy;
 
     public:
-        explicit Context(std::unique_ptr<Strategy> strategy) : strategy_(std::move(strategy)) {}
+        explicit Context(std::unique_ptr<Strategy> strategy) : m_strategy(std::move(strategy)) {}
 
         int executeStrategy(int a, int b) const
         {
-            return strategy_->execute(a, b);
+            return m_strategy->execute(a, b);
         }
     };
 

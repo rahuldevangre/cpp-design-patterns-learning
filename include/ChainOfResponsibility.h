@@ -17,19 +17,19 @@ namespace Chain
     class Handler
     {
     protected:
-        std::shared_ptr<Handler> next_;
+        std::shared_ptr<Handler> m_next;
 
     public:
         virtual ~Handler() = default;
         void setNext(std::shared_ptr<Handler> next)
         {
-            next_ = std::move(next);
+            m_next = std::move(next);
         }
         virtual void handle(int request) const
         {
-            if (next_)
+            if (m_next)
             {
-                next_->handle(request);
+                m_next->handle(request);
             }
         }
     };

@@ -37,38 +37,38 @@ namespace Command
 
     class ConcreteCommandA : public Command
     {
-        Receiver &receiver_;
+        Receiver &m_receiver;
 
     public:
-        explicit ConcreteCommandA(Receiver &receiver) : receiver_(receiver) {}
+        explicit ConcreteCommandA(Receiver &receiver) : m_receiver(receiver) {}
         void execute() override
         {
-            receiver_.actionA();
+            m_receiver.actionA();
         }
     };
 
     class ConcreteCommandB : public Command
     {
-        Receiver &receiver_;
+        Receiver &m_receiver;
 
     public:
-        explicit ConcreteCommandB(Receiver &receiver) : receiver_(receiver) {}
+        explicit ConcreteCommandB(Receiver &receiver) : m_receiver(receiver) {}
         void execute() override
         {
-            receiver_.actionB();
+            m_receiver.actionB();
         }
     };
 
     // Invoker executes commands and can store history.
     class Invoker
     {
-        std::vector<std::unique_ptr<Command>> history_;
+        std::vector<std::unique_ptr<Command>> m_history;
 
     public:
         void executeCommand(std::unique_ptr<Command> command)
         {
             command->execute();
-            history_.push_back(std::move(command));
+            m_history.push_back(std::move(command));
         }
     };
 

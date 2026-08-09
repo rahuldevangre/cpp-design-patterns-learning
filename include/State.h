@@ -27,19 +27,19 @@ namespace State
     // Context keeps a reference to a State object.
     class Context
     {
-        std::unique_ptr<State> state_;
+        std::unique_ptr<State> m_state;
 
     public:
-        explicit Context(std::unique_ptr<State> state) : state_(std::move(state)) {}
+        explicit Context(std::unique_ptr<State> state) : m_state(std::move(state)) {}
 
         void setState(std::unique_ptr<State> state)
         {
-            state_ = std::move(state);
+            m_state = std::move(state);
         }
 
         void request()
         {
-            state_->handle(*this);
+            m_state->handle(*this);
         }
     };
 
