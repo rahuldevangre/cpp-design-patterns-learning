@@ -29,7 +29,7 @@ top of the header and a runnable example in `src/main.cpp`.
 
 ## Project structure
 
-- `include/patterns/` — header-only pattern examples with theory and implementation
+- `include/` — header-only pattern examples with theory and implementation
 - `src/main.cpp` — single executable that runs all pattern demos
 - `CMakeLists.txt` — build configuration for the example executable
 
