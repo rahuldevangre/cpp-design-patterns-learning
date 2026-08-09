@@ -1,8 +1,18 @@
 # C++ Design Patterns Collection
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+**Repository:** https://github.com/rahuldevangre/cpp-design-patterns-learning
+
 A learning-focused C++ repository demonstrating common design patterns.
 All examples are implemented in header-only form to make the code easy to read
 and reuse for study.
+
+## Project description
+
+This repo contains self-contained, header-only implementations of ten classic
+design patterns. Each pattern includes a short theoretical explanation at the
+top of the header and a runnable example in `src/main.cpp`.
 
 ## Patterns included
 
