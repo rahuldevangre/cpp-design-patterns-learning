@@ -7,6 +7,8 @@ namespace State
 {
 
     class Context;
+    // Forward declaration is required because ConcreteStateA uses ConcreteStateB
+    // before ConcreteStateB is fully defined later in this header.
     class ConcreteStateB;
 
     // State
@@ -44,21 +46,13 @@ namespace State
     class ConcreteStateA : public State
     {
     public:
-        void handle(Context &context) override
-        {
-            std::cout << "  StateA handling request and switching to StateB\n";
-            context.setState(std::make_unique<ConcreteStateB>());
-        }
+        void handle(Context &context) override;
     };
 
     class ConcreteStateB : public State
     {
     public:
-        void handle(Context &context) override
-        {
-            std::cout << "  StateB handling request and switching to StateA\n";
-            context.setState(std::make_unique<ConcreteStateA>());
-        }
+        void handle(Context &context) override;
     };
 
     inline void run()
@@ -69,5 +63,17 @@ namespace State
         context.request();
         context.request();
         std::cout << '\n';
+    }
+
+    inline void ConcreteStateA::handle(Context &context)
+    {
+        std::cout << "  StateA handling request and switching to StateB\n";
+        context.setState(std::make_unique<ConcreteStateB>());
+    }
+
+    inline void ConcreteStateB::handle(Context &context)
+    {
+        std::cout << "  StateB handling request and switching to StateA\n";
+        context.setState(std::make_unique<ConcreteStateA>());
     }
 }
