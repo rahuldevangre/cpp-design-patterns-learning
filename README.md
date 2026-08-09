@@ -16,6 +16,8 @@ top of the header and a runnable example in `src/main.cpp`.
 
 ## Patterns included
 
+These examples are implemented as individual header-only patterns in `include/`.
+
 - Factory Method
 - Composite
 - Decorator
