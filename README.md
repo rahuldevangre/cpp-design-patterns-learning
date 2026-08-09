@@ -48,13 +48,22 @@ This repo is designed for learning:
 mkdir build
 cd build
 cmake ..
-cmake --build .
+cmake --build . --config Debug
 ```
 
 ## Run
 
+On Windows (from the `build` directory):
+
 ```bash
-./design_patterns_examples
+.\Debug\design_patterns_examples.exe
+```
+
+Or build and run Release:
+
+```bash
+cmake --build . --config Release
+.\Release\design_patterns_examples.exe
 ```
 
 ## Contributing
